@@ -128,3 +128,6 @@ complete -o nospace -C /usr/local/bin/kustomize kustomize
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# To customize prompt, run `p10k configure` or edit ~/.oh-my-zsh/custom/themes/powerlevel10k/config/p10k-classic.zsh.
+[[ ! -f ~/.oh-my-zsh/custom/themes/powerlevel10k/config/p10k-classic.zsh ]] || source ~/.oh-my-zsh/custom/themes/powerlevel10k/config/p10k-classic.zsh
