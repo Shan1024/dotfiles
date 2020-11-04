@@ -68,7 +68,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git mvn httpie jsontools zsh-syntax-highlighting zsh-autosuggestions
+  git mvn httpie jsontools zsh-autosuggestions
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -102,12 +102,15 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-alias gitpum="git pull upstream master"
-alias gitpom="git pull origin master"
+alias gitpum="git pull upstream main"
+alias gitpom="git pull origin main"
 alias gits="git status"
 alias gitr="git remote -v"
+
 alias d="axel -a"
+
 alias k="kubectl"
+
 alias dot="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 
 . /Users/shan/.oh-my-zsh/plugins/z/z.sh
@@ -121,9 +124,10 @@ export PATH="/usr/local/opt/go@1.9/bin:$PATH"
 
 export NVM_DIR=~/.nvm
 source $(brew --prefix nvm)/nvm.sh
-source /Users/shan/Documents/sources/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
 [[ /usr/local/bin/kubectl ]] && source <(kubectl completion zsh)
 autoload -U +X bashcompinit && bashcompinit
+
 complete -o nospace -C /usr/local/bin/kustomize kustomize
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
