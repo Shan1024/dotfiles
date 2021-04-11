@@ -68,7 +68,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git mvn httpie jsontools zsh-autosuggestions
+  git zsh-autosuggestions
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -102,16 +102,61 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-alias gitpum="git pull upstream main"
-alias gitpom="git pull origin main"
+###############
+##### GIT #####
+###############
+alias gitfo="git fetch origin"
+alias gitpum="git pull upstream master"
+alias gitpom="git pull origin master"
+
+alias gitd="git diff"
+
+alias gitc="git commit -m"
+
 alias gits="git status"
+
 alias gitr="git remote -v"
 
-alias d="axel -a"
+alias gitco="git checkout"
+alias gitcom="git checkout master"
+alias gitcob="git checkout -b"
+
+alias gitbd="git branch -d"
+
+alias gitrem="git rebase master"
+
+alias gitprune="git remote prune origin"
+
+alias gitclean="gitcom && gitfo && gitpom && gitprune"
+######################
+##### Kubernetes #####
+######################
 
 alias k="kubectl"
 
+alias karf="kubectl apply -R -f"
+alias kdrf="kubectl delete -R -f"
+
+alias kga="kubectl get all"
+alias kgan="kubectl get all -n"
+
+####################
+##### Minikube #####
+####################
+
+alias mkr="minikube stop && minikube start"
+
+#################
+##### Other #####
+#################
+
+alias kk="kubecolor"
+
 alias dot="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
+
+alias d="axel -a"
+
+alias tf="terraform"
 
 . /Users/shan/.oh-my-zsh/plugins/z/z.sh
 
@@ -128,10 +173,14 @@ source $(brew --prefix nvm)/nvm.sh
 [[ /usr/local/bin/kubectl ]] && source <(kubectl completion zsh)
 autoload -U +X bashcompinit && bashcompinit
 
-complete -o nospace -C /usr/local/bin/kustomize kustomize
+. <(flux completion zsh)
+
+# complete -o nospace -C /usr/local/bin/kustomize kustomize
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # To customize prompt, run `p10k configure` or edit ~/.oh-my-zsh/custom/themes/powerlevel10k/config/p10k-classic.zsh.
 [[ ! -f ~/.oh-my-zsh/custom/themes/powerlevel10k/config/p10k-classic.zsh ]] || source ~/.oh-my-zsh/custom/themes/powerlevel10k/config/p10k-classic.zsh
+
+complete -o nospace -C /usr/local/bin/terraform terraform
