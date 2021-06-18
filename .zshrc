@@ -108,6 +108,7 @@ source $ZSH/oh-my-zsh.sh
 alias gitfo="git fetch origin"
 alias gitpum="git pull upstream master"
 alias gitpom="git pull origin master"
+alias gitpos="git pull origin staging"
 
 alias gitd="git diff"
 
@@ -119,20 +120,23 @@ alias gitr="git remote -v"
 
 alias gitco="git checkout"
 alias gitcom="git checkout master"
+alias gitcos="git checkout staging"
 alias gitcob="git checkout -b"
 
 alias gitbd="git branch -d"
 
 alias gitrem="git rebase master"
+alias gitres="git rebase staging"
 
 alias gitprune="git remote prune origin"
 
-alias gitclean="gitcom && gitfo && gitpom && gitprune"
+alias gitcleanm="gitcom && gitfo && gitpom && gitprune"
+alias gitcleans="gitcos && gitfo && gitpos && gitprune"
 ######################
 ##### Kubernetes #####
 ######################
 
-alias k="kubectl"
+alias kk="kubectl"
 
 alias karf="kubectl apply -R -f"
 alias kdrf="kubectl delete -R -f"
@@ -144,19 +148,31 @@ alias kgan="kubectl get all -n"
 ##### Minikube #####
 ####################
 
+alias mk="minikube"
 alias mkr="minikube stop && minikube start"
+alias mkl="eval $(minikube docker-env)"
+alias mkul="eval $(minikube docker-env --unset)"
+
+#################
+###### SSH ######
+#################
+
+alias ssh-stackops="ssh -i stackops-bastion-key ec2-user@3.1.206.173"
+alias ssh-apollo="ssh -i apollo-bastion-key ec2-user@18.136.206.246"
 
 #################
 ##### Other #####
 #################
 
-alias kk="kubecolor"
+alias k="kubecolor"
 
 alias dot="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 
 alias d="axel -a"
 
 alias tf="terraform"
+
+#################
 
 . /Users/shan/.oh-my-zsh/plugins/z/z.sh
 
